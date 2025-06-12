@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Registration Form</title>
+<style>
+  /* Body with attractive background and centered content */
+  body {
+    margin: 0;
+    height: 100vh;
+    display: flex; /* For centering content */
+    justify-content: center;
+    align-items: center;
+   
+    font-family: 'Arial', sans-serif;
+  }
+
+  /* Container for the form */
+  form {
+    background-color: rgba(240, 240, 240, 0.4);
+    width: 420px;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Style for input controls */
+  .control {
+    width: 100%;
+    height: 45px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    padding: 0 15px;
+    font-size: 16px;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+
+  /* Focus effect on inputs */
+  .control:focus {
+    outline: none;
+    border-color: #4a90e2;
+    box-shadow: 0 0 8px rgba(74, 144, 226, 0.3);
+  }
+
+  /* Style for the submit button */
+input[type="submit"] {
+    width: 100%;
+    height: 45px;
+    border-radius: 8px;
+    border: none;
+    background: radial-gradient(circle at 30% 30%, #78035d, #357ABD);
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s, box-shadow 0.3s;
+  }
+
+input[type="submit"]:hover {
+    background: radial-gradient(circle at 30% 30%, #4d0a95, #a912c7);
+    box-shadow: 0 4px 12px rgba(53, 122, 189, 0.4);
+  }
+</style>
+</head>
+<body>
+   
+   <!-- Use <form> for semantic correctness -->
+   <form name="fname" action="/register" method="post">
+       <input type="text" name="name" placeholder="Enter Name" class="control" />
+       <input type="text" name="email" placeholder="Enter Email" class="control" />
+       <input type="text" name="contact" placeholder="Enter Contact" class="control" />
+       <input type="text" name="oldusername" placeholder="Old UserName" class="control" />
+       <input type="text" name="newusername" placeholder="New UserName" class="control" />
+       <!-- Change to password type for security -->
+       <input type="password" name="password" placeholder="Enter Password" class="control" />
+       <input type="submit" name="s" value="Register" />
+       <%=msg%>
+   </form>
+    
+</body>
+</html>
