@@ -42,3 +42,9 @@ exports.getloginUserProfile=(loginuserId)=>{
     });
     return promise;
 };
+
+exports.addcastegoryfromDB = (name, callback) => {
+    conn.query("INSERT INTO category VALUES (0, ?)", [name], callback);
+};
+
+    

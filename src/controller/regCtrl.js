@@ -34,3 +34,24 @@ exports.validateuser=(req,res)=>{
 exports.homepage=(req,res)=>{
     res.render("homepage.ejs");
 }
+
+
+//caterory add
+exports.addcategory=(req,res)=>{
+    res.render("AddCategory.ejs",{msg:""});
+}
+
+
+  exports.AddCat = (req, res) => {
+    const { name } = req.body;
+
+    regmodel.addcastegoryfromDB(name, (err, result) => {
+        if (err) {
+            console.error("Insert error:", err);
+            res.status(500).send("Something went wrong");
+        } else {
+            res.send("Category inserted successfully");
+            // or res.redirect("/admin/dashboard");
+        }
+    });
+};
