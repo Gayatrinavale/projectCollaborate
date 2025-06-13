@@ -11,5 +11,8 @@ router.get("/signup",regCtrl.registerpage)
 router.get("/signin",regCtrl.loginpage);
 router.post("/validate",regCtrl.validateuser);
 
+router.get("/addcat",regCtrl.addcategory);
+router.post("/save",regCtrl.saveCategorydata);
+
 
 module.exports=router;

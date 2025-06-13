@@ -34,3 +34,18 @@ exports.validateuser=(req,res)=>{
 exports.homepage=(req,res)=>{
     res.render("homepage.ejs");
 }
+exports.addcategory=(req,res)=>{
+    res.render("AddCategory.ejs",{msg:""});
+}
+exports.saveCategorydata = (req, res) => {
+    let { categoryname } = req.body;
+
+    regmodel.saveCategorydata(categoryname, (err, result) => {
+        if (err) {
+            console.error("Error saving category:", err);
+            res.render("AddCategory", { msg: "Error saving category" });
+        } else {
+            res.render("AddCategory", { msg: "Category added successfully" });
+        }
+    });
+};

@@ -42,3 +42,8 @@ exports.getloginUserProfile=(loginuserId)=>{
     });
     return promise;
 };
+
+// regmodel.js
+exports.saveCategorydata = (name, callback) => {
+    conn.query("INSERT INTO category (name) VALUES (?)", [name], callback);
+};
