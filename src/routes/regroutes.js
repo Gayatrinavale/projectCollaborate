@@ -14,5 +14,14 @@ router.post("/validate",regCtrl.validateuser);
 router.get("/addcat",regCtrl.addcategory);
 router.post("/save",regCtrl.saveCategorydata);
 
+router.get("/viewDish", regCtrl.viewCatpage);   
 
+
+ router.get("/delcatbyid",regCtrl.delcategory);
+
+router.get("/search",regCtrl.searchpage);
+
+router.get("/catupdate",regCtrl.updatepage);
+
+router.post("/catfinalupdate",regCtrl.updatepagetwo);
 module.exports=router;
