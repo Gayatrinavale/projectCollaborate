@@ -168,3 +168,7 @@ exports.updatepagetwo = (req, res) => {
         }
     });
 };
+//admin  dashboard
+exports.admindash=(req,res)=>{
+     res.render("dashboard.ejs");
+}

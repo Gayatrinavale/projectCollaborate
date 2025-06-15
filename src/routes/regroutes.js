@@ -24,4 +24,6 @@ router.get("/search",regCtrl.searchpage);
 router.get("/catupdate",regCtrl.updatepage);
 
 router.post("/catfinalupdate",regCtrl.updatepagetwo);
+
+router.get("/admindashboard",regCtrl.admindash);
 module.exports=router;
