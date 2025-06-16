@@ -34,6 +34,19 @@ exports.validateuser=(req,res)=>{
 exports.homepage=(req,res)=>{
     res.render("homepage.ejs");
 }
+//+++++++++++++++++++++++++++++++++++++++++++++HOMEPAGE Content++++++++++++++++
+
+ exports.homemenu = (req, res) => {
+  regmodel.getAllMenuItemsfromDB((err, menuItems) => {
+    if (err) {
+      return res.send("Error fetching menu");
+    }
+    res.render("HomeMenu", { menuItems });
+  });
+};
+
+
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 /*
 exports.addcategory=(req,res)=>{
@@ -172,3 +185,42 @@ exports.updatepagetwo = (req, res) => {
 exports.admindash=(req,res)=>{
      res.render("dashboard.ejs");
 }
+//++++++++++++++++++++++++++++=============== Menue ++++++++++++++++++++++++++++++++++++++++
+exports.AddAdminmenu = (req, res) => {
+  regmodel.getAllCategoryFormenu((err, categories) => {
+    if (err) {
+      return res.send("Error fetching categories");
+    }
+
+    // ✅ Pass `msg` even if it's blank
+    res.render("AddAdminMenu", { categories, msg: "" });
+  });
+};
+exports.SaveMenuPage = (req, res) => {
+  const { name, category, price, description } = req.body;
+  const image = req.file ? req.file.filename : null;
+
+  regmodel.savemenufromDB(name, category, price, description, image, (err, result) => {
+    if (err) {
+      console.log("Error saving menu:", err); // 👈 Check terminal for real DB error
+      regmodel.getAllCategoryFormenu((e, categories) => {
+        res.render("AddAdminMenu", { msg: "Error saving menu", categories });
+      });
+    } else {
+      regmodel.getAllCategoryFormenu((e, categories) => {
+        res.render("AddAdminMenu", { msg: "Menu added successfully", categories });
+      });
+    }
+  });
+};
+
+
+exports.ViewAdminmenue = (req, res) => {
+    regmodel.ViewAllAdminMenus((err, result) => {
+        if (err) {
+            console.log(err);
+        } else {
+            res.render("viewmenu", { menus: result }); // <- Check this line
+        }
+    });
+};

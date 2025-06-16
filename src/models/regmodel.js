@@ -69,6 +69,13 @@ exports.viewCatpage=()=>{
 // };
 
 */
+//===============================Homepage navbar content ===================
+
+exports.getAllMenuItemsfromDB = (callback) => {
+  conn.query("SELECT * FROM menu", callback);
+};
+
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 exports.viewCatpage = () => {
     return new Promise((resolve, reject) => {
         conn.query("SELECT * FROM category", (err, result) => {
@@ -113,3 +120,28 @@ exports.updatepagefinalfromDB = (id, name, callback) => {
         }
     });
 };
+
+
+//+++++++++++++++++++++++++Menu ++++++++++++++++++++++++++++++++++++++++++++++
+
+exports.getAllCategoryFormenu=(callback)=>{
+    conn.query("select * from category",callback);
+};
+
+exports.savemenufromDB=(item_name, category_id, price, description, image,callback)=>{
+    conn.query("insert into menu(item_name, category_id, price, description, image)values(?,?,?,?,?)",[item_name, category_id, price, description, image],callback);
+};
+
+// exports.ViewAllAdminMenus = (callback) => {
+//     const sql = 'SELECT * FROM menu'; 
+//     connection.query(sql, callback);
+// };
+// exports.ViewAllAdminMenus = (callback) => {
+//     conn.query("SELECT menu.id, menu.item_name AS name, category.name AS category, menu.price, menu.description FROM menu JOIN category ON menu.category = category.id", callback);
+
+// };
+
+exports.ViewAllAdminMenus = (callback) =>{
+    conn.query("select m.id,m.item_name AS name,c.name AS category,m.price, m.description from menu m join category c on m.category_id")
+}
+
