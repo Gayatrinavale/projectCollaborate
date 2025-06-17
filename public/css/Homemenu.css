@@ -1,0 +1,57 @@
+/* Container styling */
+.container {
+  margin-top: 30px;
+}
+
+/* Card styling */
+.card {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border: none;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.2s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+/* Card image */
+.card-img-top {
+  height: 220px;
+  object-fit: cover;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Card body */
+.card-body {
+  background-color: #fefefe;
+  padding: 1rem;
+}
+
+/* Item title */
+.card-title {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Description */
+.card-text {
+  color: #666;
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Price text */
+.card-text strong {
+  color: #e67e22;
+  font-size: 1.1rem;
+}
+
+/* Responsive spacing */
+@media (max-width: 768px) {
+  .card {
+    margin-bottom: 20px;
+  }
+}

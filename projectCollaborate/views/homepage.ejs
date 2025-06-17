@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Restaurant Landing Page</title>
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Your custom navbar styles -->
+  <link rel="stylesheet" href="/css/navbar.css">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background-image: url("/images/steam.jpg");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .main {
+      flex: 1;
+      display: flex;
+      flex-direction: row; 
+      align-items: center;
+      justify-content: space-around;
+      width: 90%;
+      max-width: 1200px;
+      margin: 80px auto;
+      padding: 15px 20px;
+      background: rgba(255, 255, 255, 0.8); 
+      border-radius: 15px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    }
+
+    .rotating-image-container {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .rotating-image-container img {
+      width: 350px;
+      height: 350px;
+      border-radius: 50%;
+      border: 4px solid #ff9800;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+      animation: rotate 50s linear infinite;
+    }
+
+    .text-content {
+      flex: 1;
+      padding: 20px;
+      display: flex;
+      flex-direction: column; 
+      align-items: flex-start; 
+    }
+
+    h1 {
+      font-size: 2.5em;
+      color: #d32f2f;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+
+    p {
+      font-size: 1.2em;
+      color: #333;
+      margin-bottom: 30px;
+      line-height: 1.5;
+    }
+
+    button {
+      background-color: #ff9800;
+      color: #fff;
+      font-size: 1.2em;
+      padding: 15px 30px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      transition: background-color 0.3s, transform 0.2s;
+    }
+
+    button:hover {
+      background-color: #e68a00;
+      transform: translateY(-2px);
+    }
+
+    @keyframes rotate {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+
+<body>
+  <%- include('nav.ejs') %>
+
+  <div class="main">
+    <div class="rotating-image-container">
+      <img src="/images/a.jpg" alt="Delicious Food" />
+    </div>
+    <div class="text-content">
+      <h1>Welcome to Our Restaurant</h1>
+      <p>Experience culinary artistry and warm hospitality at our restaurant. Join us for an unforgettable dining experience where taste meets elegance.</p>
+      <button>Book the Table</button>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS (No jQuery) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Menu</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom CSS files -->
+  <link rel="stylesheet" href="/css/Homemenu.css">
+  <link rel="stylesheet" href="/css/navbar.css">
+</head>
+<body>
+
+  <!-- Navbar include -->
+  <%- include('nav') %>
+
+  <h1 class="text-center my-4">Our Menu</h1>
+
+  <div class="container">
+    <div class="row">
+      <% menuItems.forEach(item => { %>
+        <div class="col-md-4">
+          <div class="card mb-4">
+            <img src="/uploads/<%= item.image %>" class="card-img-top" alt="menu image">
+            <div class="card-body">
+              <h5 class="card-title"><%= item.item_name %></h5>
+              <p class="card-text"><%= item.description %></p>
+              <p class="card-text"><strong>₹ <%= item.price %></strong></p>
+            </div>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+ 
+
+</html>

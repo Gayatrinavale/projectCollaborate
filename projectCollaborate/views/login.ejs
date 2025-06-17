@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Login Form with Icons</title>
+<!-- Font Awesome CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+   background-image: url("/images/i.jpg");
+    background-repeat: no-repeat;
+    background-size: cover; /* Better for background image */
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+  }
+
+  /* Style the form container */
+  form {
+    background-color: rgba(240, 240, 240, 0.4);
+    width: 420px;
+    padding: 30px;
+    margin-top: 90px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Container for input and icon */
+  .input-group {
+    position: relative; /* For absolute positioning inside */
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  /* Icon styles inside input group */
+  .input-group i {
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+    color: #999;
+    font-size: 18px;
+    pointer-events: none; /* so icon doesn't block input focus */
+  }
+
+  /* Input field styles */
+  .control {
+    width: 100%;
+    height: 45px;
+    padding-left: 45px; /* space for icon inside input */
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    padding: 0 15px;
+    font-size: 16px;
+    box-sizing: border-box;
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+
+  /* Focus effect on inputs */
+  .control:focus {
+    outline: none;
+    border-color: #4a90e2;
+    box-shadow: 0 0 8px rgba(74, 144, 226, 0.3);
+  }
+
+  /* Submit button styling */
+input[type="submit"] {
+    width: 100%;
+    height: 45px;
+    border-radius: 8px;
+    border: none;
+    background: radial-gradient(circle at 30% 30%, #78035d, #357ABD);
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s, box-shadow 0.3s;
+  }
+
+input[type="submit"]:hover {
+    background: radial-gradient(circle at 30% 30%, #4d0a95, #a912c7);
+    box-shadow: 0 4px 12px rgba(53, 122, 189, 0.4);
+  }
+
+
+  .register-text {
+    display: flex; /* Arrange children in one line */
+    align-items: center; /* Vertically center items */
+    margin-top: 20px;
+    font-size: 1em;
+    color: #333;
+    margin-right: 10px;
+  }
+</style>
+</head>
+<body>
+
+<form name="ffname" action="/validate" method="post">
+  <!-- Username input with icon -->
+   
+  <div class="input-group">
+   <i class="fas fa-user"></i>
+    <input type="text" name="username" placeholder="    Enter UserName" class="control"/>
+  </div>
+  
+  <!-- Password input with icon -->
+  <div class="input-group">
+    <i class="fas fa-lock"></i>
+    <input type="password" name="password" placeholder="     Enter Password" class="control"/>
+  </div>
+  
+  <!-- Submit button -->
+  <input type="submit" name="s" value="Login"/>
+  <div class="register-text">
+  <h3>New Registration...?</h3>&nbsp&nbsp<a href="/signup"> <h3>Register</h3></a>
+  </div>
+  <%=msg%>
+</form>
+
+</body>
+</html>

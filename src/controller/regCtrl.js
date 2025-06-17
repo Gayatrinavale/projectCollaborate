@@ -34,3 +34,208 @@ exports.validateuser=(req,res)=>{
 exports.homepage=(req,res)=>{
     res.render("homepage.ejs");
 }
+//+++++++++++++++++++++++++++++++++++++++++++++HOMEPAGE Content++++++++++++++++
+
+ exports.homemenu = (req, res) => {
+  regmodel.getAllMenuItemsfromDB((err, menuItems) => {
+    if (err) {
+      return res.send("Error fetching menu");
+    }
+    res.render("HomeMenu", { menuItems });
+  });
+};
+//++++++++++++++++++++++++++++++++++++++++=  home page +++++++++++
+exports.aboutpage=(req,res)=>{
+    res.render("about.ejs",{msg:""});
+}
+
+exports.chefpage=(req,res)=>{
+    res.render("chef.ejs",{msg:""});
+}
+
+exports.gallerypage=(req,res)=>{
+    res.render("gallery.ejs",{msg:""});
+}
+
+exports.contactpage=(req,res)=>{
+    res.render("contact.ejs",{msg:""});
+}
+
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+/*
+exports.addcategory=(req,res)=>{
+    res.render("AddCategory.ejs",{msg:""});
+}
+exports.saveCategorydata = (req, res) => {
+    let {name } = req.body;
+        
+    regmodel.saveCategorydata(name, (err, result) => {
+        if (err) {
+           
+            res.render("AddCategory", { msg: "Error saving category" });
+        } else {
+            res.render("AddCategory", { msg: "Category added successfully" });
+        }
+    });
+};
+
+exports.viewCatpage=(req,res)=>{
+    let result=regmodel.viewCatpage();
+    result.then((r)=>{
+        if(r>0){
+            console.log(r);
+            res.render("viewcategory.ejs",{data:r});
+        }
+        else{
+            res.render("viewcategory.ejs",{data:[]});
+        }
+    }).catch((err)=>{
+        console.log("error");
+    })
+
+};
+
+// exports.viewCatpage = (req, res) => {
+//     regmodel.viewCatpagefromDB((err, result) => {
+//         if (err) {
+//             console.log("Error fetching category:", err);
+//             res.render("AddCategory");
+//         } else {
+//             res.render("viewcategory", { msg: result }); // Pass result to EJS
+//         }
+//     });
+// };
+
+*/
+
+
+
+exports.viewCatpage = (req, res) => {
+    regmodel.viewCatpage()
+        .then((r) => {
+            console.log("Data from DB:", r);
+            res.render("viewcategory.ejs", { data: r });
+        })
+        .catch((err) => {
+            console.error("Error fetching data:", err);
+            res.render("viewcategory.ejs", { data: [] });
+        });
+};
+
+exports.addcategory = (req, res) => {
+    res.render("AddCategory.ejs", { msg: "" });
+};
+
+exports.saveCategorydata = (req, res) => {
+    let { name } = req.body;
+
+    regmodel.saveCategorydata(name, (err, result) => {
+        if (err) {
+            res.render("AddCategory", { msg: "Error saving category" });
+        } else {
+            res.render("AddCategory", { msg: "Category added successfully" });
+        }
+    });
+};
+
+
+exports.delcategory = (req, res) => {
+    let cid = parseInt(req.query.id?.trim());
+
+    regmodel.delcatfromDB(cid, (err, result) => {
+        if (err) {
+            res.render("viewcategory.ejs", { data: [] }); // or show error message
+        } else {
+            res.render("viewcategory.ejs", { data: result });
+        }
+    });
+};
+
+exports.searchpage = (req, res) => {
+    let name = req.query.sd;
+
+    regmodel.searchpagefromDB(name, (err, result) => {
+        if (err) {
+            res.render("viewcategory.ejs", { data: [] }); // Handle error gracefully
+        } else {
+            res.render("viewcategory.ejs", { data: result });
+        }
+    });
+};
+
+// exports.searchpage = (req, res) => {
+//     let name = req.query.sd;
+//     regmodel.searchpagefromDB(name, (err, result) => {
+//         if (err) {
+//             res.json([]);  // important: respond with JSON, not a view
+//         } else {
+//             res.json(result);
+//         }
+//     });
+// };
+
+
+// Show the update form
+exports.updatepage = (req, res) => {
+    let id = parseInt(req.query.cid.trim());  // cid from URL, maps to id in DB
+    regmodel.updatepagefromDB(id, (err, result) => {
+        res.render("updatecat.ejs", { crecord: result });
+    });
+};
+
+// Handle update form POST submission
+exports.updatepagetwo = (req, res) => {
+    let { id, name } = req.body;  // id and name from form
+
+    regmodel.updatepagefinalfromDB(id, name, (err, result) => {
+        if (err) {
+            res.render("viewcategory.ejs", { data: [] });
+        } else {
+            res.render("viewcategory.ejs", { data: result });
+        }
+    });
+};
+//admin  dashboard
+exports.admindash=(req,res)=>{
+     res.render("dashboard.ejs");
+}
+//++++++++++++++++++++++++++++=============== Menue ++++++++++++++++++++++++++++++++++++++++
+exports.AddAdminmenu = (req, res) => {
+  regmodel.getAllCategoryFormenu((err, categories) => {
+    if (err) {
+      return res.send("Error fetching categories");
+    }
+
+    // ✅ Pass `msg` even if it's blank
+    res.render("AddAdminMenu", { categories, msg: "" });
+  });
+};
+exports.SaveMenuPage = (req, res) => {
+  const { name, category, price, description } = req.body;
+  const image = req.file ? req.file.filename : null;
+
+  regmodel.savemenufromDB(name, category, price, description, image, (err, result) => {
+    if (err) {
+      console.log("Error saving menu:", err); // 👈 Check terminal for real DB error
+      regmodel.getAllCategoryFormenu((e, categories) => {
+        res.render("AddAdminMenu", { msg: "Error saving menu", categories });
+      });
+    } else {
+      regmodel.getAllCategoryFormenu((e, categories) => {
+        res.render("AddAdminMenu", { msg: "Menu added successfully", categories });
+      });
+    }
+  });
+};
+
+
+exports.ViewAdminmenue = (req, res) => {
+    regmodel.ViewAllAdminMenus((err, result) => {
+        if (err) {
+            console.log(err);
+        } else {
+            res.render("ViewAdminMenu", { menus: result }); // <- Check this line
+        }
+    });
+};
