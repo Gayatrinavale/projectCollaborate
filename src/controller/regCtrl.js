@@ -44,7 +44,22 @@ exports.homepage=(req,res)=>{
     res.render("HomeMenu", { menuItems });
   });
 };
+//++++++++++++++++++++++++++++++++++++++++=  home page +++++++++++
+exports.aboutpage=(req,res)=>{
+    res.render("about.ejs",{msg:""});
+}
 
+exports.chefpage=(req,res)=>{
+    res.render("chef.ejs",{msg:""});
+}
+
+exports.gallerypage=(req,res)=>{
+    res.render("gallery.ejs",{msg:""});
+}
+
+exports.contactpage=(req,res)=>{
+    res.render("contact.ejs",{msg:""});
+}
 
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
@@ -220,7 +235,7 @@ exports.ViewAdminmenue = (req, res) => {
         if (err) {
             console.log(err);
         } else {
-            res.render("viewmenu", { menus: result }); // <- Check this line
+            res.render("ViewAdminMenu", { menus: result }); // <- Check this line
         }
     });
 };

@@ -31,13 +31,23 @@ router.get("/catupdate",regCtrl.updatepage);
 router.post("/catfinalupdate",regCtrl.updatepagetwo);
 
 router.get("/admindashboard",regCtrl.admindash);
+//+===============================================Home page ++++++++++++++++++++++++
 
+router.get("/about",regCtrl.aboutpage);
+
+router.get("/chef",regCtrl.chefpage);
+
+router.get("/gallery",regCtrl.gallerypage);
+
+router.get("/contact",regCtrl.contactpage);
 
 //=============Menu AAdmin Dashboard ====================================
 router.get("/addmenu",regCtrl.AddAdminmenu);
 router.post("/savemenu",upload.single("image"),regCtrl.SaveMenuPage)
 
 router.get("/viewmenu",regCtrl.ViewAdminmenue);
+
+
 
 
 

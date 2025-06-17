@@ -142,6 +142,6 @@ exports.savemenufromDB=(item_name, category_id, price, description, image,callba
 // };
 
 exports.ViewAllAdminMenus = (callback) =>{
-    conn.query("select m.id,m.item_name AS name,c.name AS category,m.price, m.description from menu m join category c on m.category_id")
+    conn.query("select m.id,m.item_name AS name,c.name AS category,m.price, m.description from menu m join category c on m.category_id=c.id",callback);
 }
 

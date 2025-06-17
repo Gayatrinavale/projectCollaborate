@@ -1,0 +1,81 @@
+.navbar {
+  background: linear-gradient(135deg, #350464, #feb47b);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 0.5rem 1rem;
+}
+
+/* Keep nav link text white */
+.navbar-nav .nav-link {
+  color:  white !important;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  transition: color 0.3s, background-color 0.3s, transform 0.3s;
+  border-radius: 4px;
+}
+
+/* On hover */
+.navbar-nav .nav-link:hover {
+  color:  white;
+  background-color: rgba(234, 230, 230, 0.2);
+  transform: scale(1.05);
+}
+
+/* Active link */
+.navbar-nav .nav-item.active .nav-link {
+  background-color: rgba(255, 255, 255, 0.3);
+  color: white !important;
+}
+
+.navbar .nav-link,
+.navbar .nav-link:focus,
+.navbar .nav-link:hover,
+.navbar .nav-item.active .nav-link {
+  color: white !important;
+}
+
+/* Dropdown menu styling */
+.dropdown-menu {
+  background: linear-gradient(135deg, #4b0082, #ff7e5f);
+  border: none;
+  border-radius: 10px;
+  padding: 0.5rem 0;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Dropdown items */
+.dropdown-menu .dropdown-item {
+  color: white;
+  padding: 0.6rem 1.2rem;
+  font-weight: 500;
+  transition: background 0.3s, transform 0.2s;
+  border-radius: 6px;
+}
+
+/* Hover effect for dropdown items */
+.dropdown-menu .dropdown-item:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  transform: scale(1.03);
+}
+
+/* Dropdown arrow hover fix */
+.navbar .dropdown-toggle::after {
+  transition: transform 0.2s ease;
+}
+
+.navbar .dropdown-toggle:hover::after {
+  transform: rotate(180deg);
+}
+
+/* Optional animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
