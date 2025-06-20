@@ -6,11 +6,7 @@
   
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
-  <script type="text/javascript" src="../public/ajax.js"></script>
-
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <!-- Custom CSS -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="/css/adminVertical.css">
 
   <style>
@@ -22,36 +18,23 @@
     }
 
     .main-content {
-      margin-left: 350px;
+      margin-left: 280px; /* Match sidebar width */
       padding: 20px;
-      margin-top: 70px;
-    }
-
-    .heading {
-      background: linear-gradient(135deg, #4b0082, #ff7e5f);
-      color: white;
-      padding: 12px 25px;
-      border-radius: 10px 10px 0 0;
-      font-size: 24px;
-      font-weight: bold;
-      text-align: center;
-      margin-bottom: 10px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      margin-top: 60px;
     }
 
     .form-control {
       max-width: 500px;
-      margin: 0 auto 20px auto;
+      margin-bottom: 20px;
     }
 
     .table-container {
-      width: 850px;
+      width: 800px;
       background-color: #fff;
-      box-shadow: 0 0 15px rgba(0,0,0,0.2);
-      padding: 0;
-      border-radius: 10px;
-      overflow: hidden;
-      margin: auto;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      padding: 20px;
+      border-radius: 8px;
+      min-height: 200px;
     }
 
     .table {
@@ -59,6 +42,11 @@
       margin-bottom: 0;
     }
 
+<<<<<<< HEAD
+    .table th, .table td {
+      padding: 6px 10px !important;
+      vertical-align: middle;
+=======
     .table th {
       background-color: #f4f4f4;
       text-align: center;
@@ -68,6 +56,7 @@
     .table td {
       vertical-align: middle;
       text-align: center;
+>>>>>>> aa49704 (i have added new ejs file also change in src)
     }
 
     .no-data-message {
@@ -77,6 +66,15 @@
       color: #888;
     }
 
+<<<<<<< HEAD
+    a {
+      text-decoration: none;
+      color: #007bff;
+    }
+
+    a:hover {
+      text-decoration: underline;
+=======
     .action-icons a {
       text-decoration: none;
       font-size: 1.2rem;
@@ -93,6 +91,7 @@
 
     .action-icons a:hover {
       opacity: 0.7;
+>>>>>>> aa49704 (i have added new ejs file also change in src)
     }
   </style>
 </head>
@@ -101,6 +100,13 @@
   <%- include('adminVertical.ejs') %>
 
   <div class="main-content">
+<<<<<<< HEAD
+    <form method="get" action="/search">
+      <input type="text" name="sd" class="form-control" placeholder="Search..." onkeydown="ajaxImpl(this.value)">
+    </form>
+
+    <div class="table-container">
+=======
     <div class="table-container">
       <div class="heading"><i class="fa-solid fa-list me-2"></i>View Categories</div>
 
@@ -108,18 +114,28 @@
         <input type="text" name="sd" class="form-control" placeholder="Search..." onkeyup="ajaxImpl(this.value)">
      
 
+>>>>>>> aa49704 (i have added new ejs file also change in src)
       <table class="table table-striped">
         <thead>
           <tr>
             <th>Id</th>
             <th>Category Name</th>
+<<<<<<< HEAD
+            <th>Delete</th>
+            <th>Update</th>
+=======
             <th>Actions</th>
+>>>>>>> aa49704 (i have added new ejs file also change in src)
           </tr>
         </thead>
         <tbody id="tblBody">
           <% if (data.length === 0) { %>
             <tr>
+<<<<<<< HEAD
+              <td colspan="4" class="no-data-message">There is no data present in the table</td>
+=======
               <td colspan="3" class="no-data-message">There is no data present in the table</td>
+>>>>>>> aa49704 (i have added new ejs file also change in src)
             </tr>
           <% } else {
             for (let i = 0; i < data.length; i++) {

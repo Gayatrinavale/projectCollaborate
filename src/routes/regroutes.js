@@ -1,6 +1,7 @@
 let routes=require("express");
 let regCtrl=require("../controller/regCtrl");
 let router=routes.Router();
+const staffRoutes = require('./staffroutes');
 let multer=require("multer");
 
 const upload=multer({dest:"./public/upload"});
@@ -31,9 +32,21 @@ router.get("/catupdate",regCtrl.updatepage);
 
 router.post("/catfinalupdate",regCtrl.updatepagetwo);
 
+<<<<<<< HEAD
 
 //+===============================================Home page ++++++++++++++++++++++++
 
+=======
+<<<<<<< HEAD
+router.get("/admindashboard",regCtrl.admindash);
+//+===============================================Home page ++++++++++++++++++++++++
+
+=======
+
+//+===============================================Home page ++++++++++++++++++++++++
+
+>>>>>>> aa49704 (i have added new ejs file also change in src)
+>>>>>>> 05e6ea034765b82c8299f038bad6556d2b0f0a25
 router.get("/about",regCtrl.aboutpage);
 
 router.get("/chef",regCtrl.chefpage);
@@ -41,8 +54,16 @@ router.get("/chef",regCtrl.chefpage);
 router.get("/gallery",regCtrl.gallerypage);
 
 router.get("/contact",regCtrl.contactpage);
+<<<<<<< HEAD
 
 router.get("/logout",regCtrl.logoutpage);
+=======
+<<<<<<< HEAD
+=======
+
+router.get("/logout",regCtrl.logoutpage);
+>>>>>>> aa49704 (i have added new ejs file also change in src)
+>>>>>>> 05e6ea034765b82c8299f038bad6556d2b0f0a25
 
 //=============Menu AAdmin Dashboard ====================================
 router.get("/addmenu",regCtrl.AddAdminmenu);
@@ -54,6 +75,24 @@ router.get("/viewmenu",regCtrl.ViewAdminmenue);
 router.get("/addstaff",regCtrl.AddAdminStaff);
 router.post("/savestaff",regCtrl.saveAdminStaff);
 router.get("/viewstaff", regCtrl.viewAdminStaff);
+<<<<<<< HEAD
+=======
+
+//+++++++++++++++++++++++++++++++++++++++++Table +++++++++++++++++++++++++++++
+router.get("/addtable", regCtrl.getAddDiningTableForm);
+router.post("/addtable", regCtrl.saveDiningTable);
+router.get("/viewtable", regCtrl.viewAdminTable);
+//  router.get("/deletetable/:id", controller.deleteDiningTable);
+// router.get("/updatetable/:id", controller.getUpdateDiningTableForm);
+// router.post("/updatetable/:id", controller.updateDiningTable);
+
+
+
+//+++++++++++++++++++++++++++++++++++++++ Staff dashboard or routes ++++++++++++++++++++++++++++++++++++++++++
+
+router.use('/staff', staffRoutes);
+
+>>>>>>> 05e6ea034765b82c8299f038bad6556d2b0f0a25
 
 //+++++++++++++++++++++++++++++++++++++++++Table +++++++++++++++++++++++++++++
 router.get("/addtable", regCtrl.getAddDiningTableForm);
