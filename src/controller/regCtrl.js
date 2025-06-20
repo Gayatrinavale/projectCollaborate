@@ -63,11 +63,17 @@ exports.contactpage=(req,res)=>{
     res.render("contact.ejs",{msg:""});
 }
 <<<<<<< HEAD
+exports.logoutpage=(req,res)=>{
+    res.render("homepage.ejs");
+}
+=======
+<<<<<<< HEAD
 =======
 exports.logoutpage=(req,res)=>{
     res.render("homepage.ejs");
 }
 >>>>>>> aa49704 (i have added new ejs file also change in src)
+>>>>>>> 05e6ea034765b82c8299f038bad6556d2b0f0a25
 
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
@@ -320,8 +326,12 @@ exports.viewAdminTable=(req,res)=>{
 //         }
 //         res.redirect("/viewtables");
 //     });
+<<<<<<< HEAD
+// };
+=======
 // };
 
 
 //++++++++++++++++++++++++++++++++++++++++ STAFF +++++++++++++++++++++++++++++++++=
 
+>>>>>>> 05e6ea034765b82c8299f038bad6556d2b0f0a25

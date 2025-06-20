@@ -13,8 +13,101 @@
   <!-- Sidebar & Navbar CSS -->
   <link rel="stylesheet" href="/css/adminVertical.css">
   <link rel="stylesheet" href="/css/adminNav.css">
-  <link rel="stylesheet" href="/css/addMenu.css">
- <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+   <link rel="stylesheet" href="/css/addmenu.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background-image: url("/images/black.jpg");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      display: flex;
+    }
+
+    .content-wrapper {
+      margin-left: 250px; /* Adjust to match your sidebar width */
+      width: calc(100% - 250px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+      padding: 0 20px;
+    }
+
+    .add-menu-card {
+      background: white;
+      padding: 20px 20px;
+      border-radius: 20px;
+      box-shadow: 0 0 40px rgba(214, 116, 11, 0.6);
+      width: 100%;
+      max-width: 450px;
+      margin-top: 150px;
+      margin-bottom: 90px;
+      height: 600px;
+    }
+
+    .add-menu-card h2 {
+      text-align: center;
+      margin-bottom: 10px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    .add-menu-card label {
+      font-weight: 600;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .add-menu-card .form-control {
+      margin-bottom: 20px;
+      height: 40px;
+      border-radius: 5px;
+    }
+
+    .add-menu-card textarea.form-control {
+      height: auto;
+      resize: vertical;
+    }
+
+    .add-menu-card .btn {
+      width: 100%;
+      height: 45px;
+      font-weight: bold;
+      background: linear-gradient(135deg, #4b0082, #ff7e5f);
+      border: none;
+      color: white;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .add-menu-card .btn:hover {
+      transform: scale(1.03);
+    }
+
+    @media (max-width: 768px) {
+      .content-wrapper {
+        margin-left: 0;
+        width: 100%;
+      }
+
+      .add-menu-card {
+        padding: 25px 20px;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -58,6 +151,7 @@
     </div>
   </div>
 
-
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
