@@ -30,23 +30,8 @@ router.get("/search",regCtrl.searchpage);
 
 router.get("/catupdate",regCtrl.updatepage);
 
-router.post("/catfinalupdate",regCtrl.updatepagetwo);
 
-<<<<<<< HEAD
 
-//+===============================================Home page ++++++++++++++++++++++++
-
-=======
-<<<<<<< HEAD
-router.get("/admindashboard",regCtrl.admindash);
-//+===============================================Home page ++++++++++++++++++++++++
-
-=======
-
-//+===============================================Home page ++++++++++++++++++++++++
-
->>>>>>> aa49704 (i have added new ejs file also change in src)
->>>>>>> 05e6ea034765b82c8299f038bad6556d2b0f0a25
 router.get("/about",regCtrl.aboutpage);
 
 router.get("/chef",regCtrl.chefpage);
@@ -54,16 +39,15 @@ router.get("/chef",regCtrl.chefpage);
 router.get("/gallery",regCtrl.gallerypage);
 
 router.get("/contact",regCtrl.contactpage);
-<<<<<<< HEAD
+
 
 router.get("/logout",regCtrl.logoutpage);
-=======
-<<<<<<< HEAD
-=======
+
+
 
 router.get("/logout",regCtrl.logoutpage);
->>>>>>> aa49704 (i have added new ejs file also change in src)
->>>>>>> 05e6ea034765b82c8299f038bad6556d2b0f0a25
+// >>>>>>> aa49704 (i have added new ejs file also change in src)
+// >>>>>>> 05e6ea034765b82c8299f038bad6556d2b0f0a25
 
 //=============Menu AAdmin Dashboard ====================================
 router.get("/addmenu",regCtrl.AddAdminmenu);
@@ -75,8 +59,8 @@ router.get("/viewmenu",regCtrl.ViewAdminmenue);
 router.get("/addstaff",regCtrl.AddAdminStaff);
 router.post("/savestaff",regCtrl.saveAdminStaff);
 router.get("/viewstaff", regCtrl.viewAdminStaff);
-<<<<<<< HEAD
-=======
+// <<<<<<< HEAD
+// =======
 
 //+++++++++++++++++++++++++++++++++++++++++Table +++++++++++++++++++++++++++++
 router.get("/addtable", regCtrl.getAddDiningTableForm);
@@ -92,7 +76,7 @@ router.get("/viewtable", regCtrl.viewAdminTable);
 
 router.use('/staff', staffRoutes);
 
->>>>>>> 05e6ea034765b82c8299f038bad6556d2b0f0a25
+// >>>>>>> 05e6ea034765b82c8299f038bad6556d2b0f0a25
 
 //+++++++++++++++++++++++++++++++++++++++++Table +++++++++++++++++++++++++++++
 router.get("/addtable", regCtrl.getAddDiningTableForm);
