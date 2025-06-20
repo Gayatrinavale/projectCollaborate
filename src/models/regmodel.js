@@ -145,3 +145,38 @@ exports.ViewAllAdminMenus = (callback) =>{
     conn.query("select m.id,m.item_name AS name,c.name AS category,m.price, m.description from menu m join category c on m.category_id=c.id",callback);
 }
 
+//++++++++++++++++++++++++++++++++++++= Staff +++++++++++++++++++++++++++++++++++++
+
+exports.AddAdminStafffromDB = (name, email, contact_no, salary, callback) => {
+    conn.query("INSERT INTO staff (staff_id, name, email, contact_no, salary) VALUES (0, ?, ?, ?, ?)", [name, email, contact_no, salary], callback);
+};
+
+
+exports.ViewAdminStafffromDB=(callback)=>{
+    conn.query("select * from staff",callback);
+}
+//++++++++++++++++++++++++++++++++++++++++++ Table  ++++++++++++++++++++++++++++++++++++++++++++++++
+exports.insertDiningTable = (table_number,capacity, status, callback) => {
+    conn.query("INSERT INTO dining_table (table_number,capacity, availability_status) VALUES (?, ?,?)",[table_number,capacity, status], callback);
+};
+exports.viewAdminTablefromDB = (callback) => {
+  conn.query("SELECT * FROM dining_table", callback);
+  
+};
+
+
+exports.deleteDiningTableById = (id, callback) => {
+    conn.query("DELETE FROM dining_table WHERE id = ?", [id], callback);
+};
+
+exports.getDiningTableById = (id, callback) => {
+    conn.query("SELECT * FROM dining_table WHERE id = ?", [id], callback);
+};
+
+exports.updateDiningTable = (id, table_number, capacity, availability_status, callback) => {
+    conn.query(
+        "UPDATE dining_table SET table_number = ?, capacity = ?, availability_status = ? WHERE id = ?",
+        [table_number, capacity, availability_status, id],
+        callback
+    );
+};
