@@ -13,6 +13,7 @@ exports.registerpage=(req,res)=>{
 }
 exports.loginpage=(req,res)=>{
     res.render("login.ejs",{msg:""});
+    
 }
 exports.validateuser=(req,res)=>{
     let{username,password}=req.body;
@@ -44,7 +45,25 @@ exports.homepage=(req,res)=>{
     res.render("HomeMenu", { menuItems });
   });
 };
+//++++++++++++++++++++++++++++++++++++++++=  home page +++++++++++
+exports.aboutpage=(req,res)=>{
+    res.render("about.ejs",{msg:""});
+}
 
+exports.chefpage=(req,res)=>{
+    res.render("chef.ejs",{msg:""});
+}
+
+exports.gallerypage=(req,res)=>{
+    res.render("gallery.ejs",{msg:""});
+}
+
+exports.contactpage=(req,res)=>{
+    res.render("contact.ejs",{msg:""});
+}
+exports.logoutpage=(req,res)=>{
+    res.render("homepage.ejs");
+}
 
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
@@ -149,16 +168,6 @@ exports.searchpage = (req, res) => {
     });
 };
 
-// exports.searchpage = (req, res) => {
-//     let name = req.query.sd;
-//     regmodel.searchpagefromDB(name, (err, result) => {
-//         if (err) {
-//             res.json([]);  // important: respond with JSON, not a view
-//         } else {
-//             res.json(result);
-//         }
-//     });
-// };
 
 
 // Show the update form
@@ -192,7 +201,6 @@ exports.AddAdminmenu = (req, res) => {
       return res.send("Error fetching categories");
     }
 
-    // ✅ Pass `msg` even if it's blank
     res.render("AddAdminMenu", { categories, msg: "" });
   });
 };
@@ -220,7 +228,92 @@ exports.ViewAdminmenue = (req, res) => {
         if (err) {
             console.log(err);
         } else {
-            res.render("viewmenu", { menus: result }); // <- Check this line
+            res.render("ViewAdminMenu", { menus: result }); // <- Check this line
         }
     });
 };
+//++++++++++++++++++++++++++++++++++++++++++++= staff ++++++++++++++++++++++++++++++
+exports.AddAdminStaff=(req,res)=>{
+    res.render("AddAdminStaff.ejs",{msg:""});
+}
+exports.saveAdminStaff=(req,res)=>{
+    let {name,email,contact,salary}=req.body;
+    regmodel.AddAdminStafffromDB(name,email,contact,salary,(err,result)=>{
+          if (err) {
+            res.render("AddAdminStaff", { msg: "Error saving Staff" });
+        } else {
+            res.render("AddAdminStaff", { msg: "Satff added successfully" });
+        }
+      
+    });
+};
+exports.viewAdminStaff = (req, res) => {
+    regmodel.ViewAdminStafffromDB((err, result) => {
+        if (err) {
+            console.log(err);
+            res.render("ViewStaff", { staffList: [], msg: "Error fetching staff data" });
+        } else {
+            res.render("ViewStaff", { staffList: result, msg: "" });
+        }
+    });
+};
+
+//+++++++++++++++++++++++++++++++++++++++ Table ++++++++++++++++++++++++++++++++++
+exports.getAddDiningTableForm = (req, res) => {
+    res.render("AddDiningTable", { msg: "" });
+};
+
+exports.saveDiningTable = (req, res) => {
+    const {table_number, capacity, availability_status } = req.body;
+
+    regmodel.insertDiningTable(table_number,capacity, availability_status, (err, result) => {
+        if (err) {
+            console.log(err);
+            res.render("AddDiningTable", { msg: "Error adding table" });
+        } else {
+            res.render("AddDiningTable", { msg: "Table added successfully" });
+        }
+    });
+};
+
+exports.viewAdminTable=(req,res)=>{
+    regmodel.viewAdminTablefromDB((err,result)=>{
+
+    if (err) {
+      console.log(err);
+      res.render("ViewTable.ejs", { tables: [], msg: "Error loading data" });
+    } else {
+      res.render("ViewTable.ejs", { tables: result, msg: "" });
+    }
+  });
+};
+// exports.deleteDiningTable = (req, res) => {
+//     const id = req.params.id;
+//     regmodel.deleteDiningTableById(id, (err) => {
+//         if (err) {
+//             console.log(err);
+//         }
+//         res.redirect("/viewtables");
+//     });
+// };
+// exports.getUpdateDiningTableForm = (req, res) => {
+//     const id = req.params.id;
+//     regmodel.getDiningTableById(id, (err, result) => {
+//         if (err) {
+//             console.log(err);
+//             res.redirect("/viewtables");
+//         } else {
+//             res.render("UpdateDiningTable", { table: result[0] });
+//         }
+//     });
+// };
+// exports.updateDiningTable = (req, res) => {
+//     const id = req.params.id;
+//     const { table_number, capacity, availability_status } = req.body;
+//     regmodel.updateDiningTable(id, table_number, capacity, availability_status, (err) => {
+//         if (err) {
+//             console.log(err);
+//         }
+//         res.redirect("/viewtables");
+//     });
+// };
