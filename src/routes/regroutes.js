@@ -1,6 +1,7 @@
 let routes=require("express");
 let regCtrl=require("../controller/regCtrl");
 let router=routes.Router();
+const staffRoutes = require('./staffroutes');
 let multer=require("multer");
 
 const upload=multer({dest:"./public/upload"});
@@ -12,9 +13,10 @@ router.get("/signup",regCtrl.registerpage)
 
 router.get("/signin",regCtrl.loginpage);
 router.post("/validate",regCtrl.validateuser);
+
+router.get("/admindashboard",regCtrl.admindash);
 //++++++++++++++++++++++++=================== Home page nav content++++++++++++++++++++++++++++++++++++++++++++
 router.get("/menu",regCtrl.homemenu);
-
 
 //++++++++++++++++++++++++++=====viewcategory admin dashboard and search delete update++++++++++++++++++++++++++
 router.get("/addcat",regCtrl.addcategory);
@@ -30,9 +32,15 @@ router.get("/catupdate",regCtrl.updatepage);
 
 router.post("/catfinalupdate",regCtrl.updatepagetwo);
 
+<<<<<<< HEAD
 router.get("/admindashboard",regCtrl.admindash);
 //+===============================================Home page ++++++++++++++++++++++++
 
+=======
+
+//+===============================================Home page ++++++++++++++++++++++++
+
+>>>>>>> aa49704 (i have added new ejs file also change in src)
 router.get("/about",regCtrl.aboutpage);
 
 router.get("/chef",regCtrl.chefpage);
@@ -40,6 +48,11 @@ router.get("/chef",regCtrl.chefpage);
 router.get("/gallery",regCtrl.gallerypage);
 
 router.get("/contact",regCtrl.contactpage);
+<<<<<<< HEAD
+=======
+
+router.get("/logout",regCtrl.logoutpage);
+>>>>>>> aa49704 (i have added new ejs file also change in src)
 
 //=============Menu AAdmin Dashboard ====================================
 router.get("/addmenu",regCtrl.AddAdminmenu);
@@ -47,7 +60,24 @@ router.post("/savemenu",upload.single("image"),regCtrl.SaveMenuPage)
 
 router.get("/viewmenu",regCtrl.ViewAdminmenue);
 
+//+++++++++++++++++++++++++++++=====  staff ++++++++++++++++
+router.get("/addstaff",regCtrl.AddAdminStaff);
+router.post("/savestaff",regCtrl.saveAdminStaff);
+router.get("/viewstaff", regCtrl.viewAdminStaff);
 
+//+++++++++++++++++++++++++++++++++++++++++Table +++++++++++++++++++++++++++++
+router.get("/addtable", regCtrl.getAddDiningTableForm);
+router.post("/addtable", regCtrl.saveDiningTable);
+router.get("/viewtable", regCtrl.viewAdminTable);
+//  router.get("/deletetable/:id", controller.deleteDiningTable);
+// router.get("/updatetable/:id", controller.getUpdateDiningTableForm);
+// router.post("/updatetable/:id", controller.updateDiningTable);
+
+
+
+//+++++++++++++++++++++++++++++++++++++++ Staff dashboard or routes ++++++++++++++++++++++++++++++++++++++++++
+
+router.use('/staff', staffRoutes);
 
 
 

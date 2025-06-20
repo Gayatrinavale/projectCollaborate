@@ -1,0 +1,18 @@
+<form action="/updatetable/<%= table.id %>" method="POST">
+  <div class="mb-3">
+    <label>Table Number</label>
+    <input type="number" name="table_number" class="form-control" value="<%= table.table_number %>" required>
+  </div>
+  <div class="mb-3">
+    <label>Capacity</label>
+    <input type="number" name="capacity" class="form-control" value="<%= table.capacity %>" required>
+  </div>
+  <div class="mb-3">
+    <label>Status</label>
+    <select name="availability_status" class="form-control">
+      <option value="Available" <%= table.availability_status === 'Available' ? 'selected' : '' %>>Available</option>
+      <option value="Occupied" <%= table.availability_status === 'Occupied' ? 'selected' : '' %>>Occupied</option>
+    </select>
+  </div>
+  <button type="submit" class="btn btn-success">Update Table</button>
+</form>
